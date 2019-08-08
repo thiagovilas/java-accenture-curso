@@ -1,0 +1,40 @@
+CREATE USER 'john'@'%' IDENTIFIED BY 'doe';
+
+CREATE DATABASE JAVA_CURSO;
+
+GRANT ALL PRIVILEGES ON JAVA_CURSO.* TO 'john'@'%';
+
+CREATE TABLE JAVA_CURSO.Cliente (
+    documento VARCHAR(15) NOT NULL PRIMARY KEY,
+    nome VARCHAR(256) NOT NULL ,
+    telefone VARCHAR(15) NOT NULL ,
+    email VARCHAR(256) NOT NULL ,
+    endereco VARCHAR(256) NOT NULL
+);
+
+
+CREATE TABLE JAVA_CURSO.Pedido (
+    numero INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	documento VARCHAR(15) NOT NULL,
+	id_produto INTEGER NOT NULL,
+    data DATE NOT NULL,
+    status VARCHAR(15) NULL,
+    valor_total DOUBLE(15,4) NULL,
+    quantidade INTEGER NULL
+);
+
+CREATE TABLE JAVA_CURSO.Produto (
+    id_produto INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(256) NOT NULL ,
+    valor DOUBLE(15,4) NULL
+);
+
+ALTER TABLE JAVA_CURSO.Pedido ADD CONSTRAINT FK_Pedido_1
+    FOREIGN KEY (documento)
+    REFERENCES Cliente (documento);
+
+ALTER TABLE JAVA_CURSO.Pedido ADD CONSTRAINT FK_Pedido_3
+    FOREIGN KEY (id_produto)
+    REFERENCES Produto (id_produto);
+
+COMMIT;

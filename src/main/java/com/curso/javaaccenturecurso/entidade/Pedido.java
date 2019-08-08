@@ -18,15 +18,14 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "PEDIDO")
+@Table(name = "Pedido")
 public class Pedido implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PEDIDO_NUMEROSEQUENCIALPEDIDO_GENERATOR")
-	@SequenceGenerator(sequenceName = "SQ_PEDIDO", allocationSize = 1, name = "PEDIDO_NUMEROSEQUENCIALPEDIDO_GENERATOR")
-	@Column(name = "NUMERO", nullable = false, precision = 15)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "NUMERO", nullable = false)
 	private long numeroPedido;
 
 	@Temporal(TemporalType.TIMESTAMP)

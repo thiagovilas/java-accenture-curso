@@ -10,15 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 @Entity
-@Table(name = "PRODUTO")
+@Table(name = "Produto")
 public class Produto implements Serializable  {
 
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUTO_NUMEROSEQUENCIALPRODUTO_GENERATOR")
-	@SequenceGenerator(sequenceName = "SQ_PRODUTO", allocationSize = 1, name = "PRODUTO_NUMEROSEQUENCIALPRODUTO_GENERATOR")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_PRODUTO", nullable = false, precision = 15)
 	private long idProduto;
 	
